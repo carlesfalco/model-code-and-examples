@@ -70,8 +70,9 @@ def fun_z(t,y,gamma,a_0,u_0):
 # Solver, using Python integrator
 
 def ode_solver_z(tf,dt,init,gamma,a_0,u_0,bol = False):
+    # choose something like dt ~ h^2
     solver = ode(fun_z)
-    solver.set_integrator('dopri5') # This is Runge-Kutta of order 4,3 with adaptive step size (can try others... vode, dop853)
+    solver.set_integrator('dopri5') # This is Runge-Kutta of order 4 with adaptive step size (can try others... vode, dop853)
     solver.set_f_params(gamma,a_0,u_0)
     solver.set_initial_value(init,0)
     print('a_0 = %.3f' % a_0)
